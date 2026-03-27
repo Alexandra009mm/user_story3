@@ -2,6 +2,7 @@
 lis_inventory = []
 
 #---------------------------------------------------------
+
 def add_products():
     keep_register = "yes"
 
@@ -28,7 +29,6 @@ def add_products():
             if quantity <= 0:
                 print("Error, enter a valid quantity")
 
-        # diccionario corregido (claves en inglés)
         dict_products = {
             "name": product_name,
             "price": price,
@@ -37,20 +37,24 @@ def add_products():
 
         lis_inventory.append(dict_products)
 
-        # ✅ ahora sí está dentro del while
         keep_register = input("do you want enter other product? yes/no: ").lower()
 
+       
+
+
+
 #---------------------------------------------------------
-def show_inventary():
+def show_lis_inventory():
     if len(lis_inventory) == 0:
         print("inventory empty")
         return
 
     for products in lis_inventory:
-        print(f"|product name: {products['name']}|")
-        print(f"|price: {products['price']}|")
-        print(f"|quantity: {products['quantity']}|")
-
+        print()
+        print("the states of your inventory:")
+        print(f"\n|product name: {products['name']}|")
+        print(f"\n|price: {products['price']}|")
+        print(f"\n|quantity: {products['quantity']}|")
 #---------------------------------------------------------
 def search_products():
 
@@ -104,3 +108,51 @@ def update_product():
             return
 
     print("product not found")
+
+
+def delete_product ():
+    name =input ("\nEnter the name of the product to delete: ").lower()
+
+    for product in lis_inventory:
+        if product["name"].lower() == name:
+            
+            confirm = input(f"  Are you sure you want to delete '{product['name']}'? (yes/no): ").lower()
+            if confirm == "yes":
+                lis_inventory.remove(product)
+                print(f"  Product '{name}' deleted successfully!\n")
+            else:
+                print(" Deletion cancelled.\n")
+            return
+
+    print(f" Product '{name}' not found.\n")
+
+
+def calculate_statistics ():
+    
+    if not lis_inventory:
+        print("  No products to calculate statistics.\n")
+        return
+
+    total_units = 0
+    total_value = 0
+    most_expensive = lis_inventory[0]
+    most_stock = lis_inventory[0]
+
+    for product in lis_inventory:
+        total_units += product["quantity"]
+        total_value += product["price"] * product["quantity"]
+
+        if product["price"] > most_expensive["price"]:
+            most_expensive = product
+
+        if product["quantity"] > most_stock["quantity"]:
+            most_stock = product
+
+    print("\n" + "=" * 60)
+    print("  INVENTORY STATISTICS")
+    print("-" * 60)
+    print(f"  Total units in stock  : {total_units}")
+    print(f"  Total inventory value : ${total_value:.2f}")
+    print(f"  Most expensive product: {most_expensive['name']} (${most_expensive['price']:.2f})")
+    print(f"  Highest stock product : {most_stock['name']} ({most_stock['quantity']} units)")
+    print("=" * 60)
