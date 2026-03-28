@@ -1,230 +1,91 @@
-# Advanced Inventory with CSV Persistence
+# Advanced Inventory System with CSV Persistence
 
-##  Description
+A Python-based command-line application designed to manage product inventory using CRUD operations and file persistence. This system allows users to store, retrieve, and analyze inventory data across sessions using CSV files.
 
-This project consists of an inventory management system developed in Python that allows users to manage products through CRUD operations (Create, Read, Update, Delete), as well as save and load data from CSV files.
+## Features
 
-The system is designed to preserve data between sessions, facilitate analysis, and allow easy sharing of information.
+* **Product Management**: Add, update, search, and delete products with validation.
+* **Inventory Display**: View all registered products in a clear format.
+* **Statistics Calculation**:
 
----
-
-##  User Story 
-
-* Save and load the inventory using CSV files to maintain data between sessions.
-* Enable business statistics analysis.
-* Apply lists, dictionaries, and tuples along with Python modules and functions.
-* Build a modular system with data persistence and error handling.
-
----
-
-##  Technologies Used
-
-* Python
-* `csv` module
-* File handling
-* Modular programming
-
----
-
-##  Project Structure
-
-```
-  inventario/
-│── app.py
-│── servicios.py
-│── archivos.py
-│── data.csv
-│── README.md
-```
-
----
-
-## ⚙️ Features
-
-*  Add products
-*  Display inventory
-*  Search products
-*  Update products
-*  Delete products
-*  Calculate statistics
-*  Save inventory to CSV
-*  Load inventory from CSV
-*  Merge or overwrite data
-
----
-
-##  Task Description
-
-###  TASK 1: Flowchart
-
-* Design the complete system flow (CRUD + persistence).
-* Represent the main menu and subprocesses for saving and loading.
-* Export the diagram in PNG or PDF format.
-
----
-
-###  TASK 2: Data Structure and Modularization
-
-* Use a list of dictionaries to represent the inventory:
-
-```
-{"nombre": str, "precio": float, "cantidad": int}
-```
-
-* Split the code into modules:
-
-  * `app.py` (main controller)
-  * `servicios.py` (business logic)
-
-* Implement CRUD and statistics functions.
-
-* Use docstrings and comments.
-
----
-
-###  TASK 3: Inventory Statistics
-
-* Calculate:
-
-  * Total units
-  * Total value
+  * Total units in inventory
+  * Total inventory value
   * Most expensive product
   * Product with highest stock
+* **CSV Persistence**:
 
-* Display results clearly.
+  * Save inventory data to CSV files
+  * Load inventory from CSV files
+  * Option to overwrite or merge existing data
+* **Error Handling**:
 
-* Optional use of lambda functions for calculations.
+  * Prevents crashes due to invalid input or file issues
+  * Handles missing files, invalid formats, and corrupted data
 
----
+## Project Structure
 
-###  TASK 4: Save CSV
+The project is modularized into several Python files:
 
-* Create the function `guardar_csv()`.
-* Validate that the inventory is not empty.
-* Write to file with header:
+* `app.py`: The main entry point containing the menu and user interaction logic.
+* `servicios.py`: Contains all business logic including CRUD operations and statistics.
+* `archivos.py`: Handles file operations such as saving and loading CSV data.
+* `data.csv`: Stores persistent inventory data.
+* `README.md`: Project documentation.
 
-```
-nombre,precio,cantidad
-```
+## Requirements
 
-* Handle errors using `try/except`.
+* Python 
 
----
+## How to Run
 
-###  TASK 5: Load CSV
+1. Clone or download the project files into the same directory.
+2. Open your terminal or command prompt.
+3. Run the application using the following command:
 
-* Implement the function `cargar_csv()`.
-
-* Validate:
-
-  * Correct header
-  * Number of columns
-  * Data types
-
-* Handle errors:
-
-  * File not found
-  * Encoding issues
-  * Invalid data
-
-* Options:
-
-  * Overwrite inventory
-  * Merge existing data
-
----
-
-###  TASK 6: Final Menu
-
-* Implement an interactive menu with options:
-
-  1. Add
-  2. Show
-  3. Search
-  4. Update
-  5. Delete
-  6. Statistics
-  7. Save CSV
-  8. Load CSV
-  9. Exit
-
-* Validations:
-
-  * Correct numeric input
-  * Non-negative values
-
-* Use a `while` loop to keep the program running.
-
----
-
-##  Concepts Applied
-
-* Variables
-* Lists
-* Dictionaries
-* Tuples
-* Functions
-* Modules
-* CSV file handling
-* Data validation
-* Error handling (`try/except`)
-* Structured programming
-
----
-
-##  How to Run the Project
-
-1. Clone the repository:
-
-```
-git clone URL_DEL_REPOSITORY
-```
-
-2. Navigate to the folder:
-
-```
-cd inventario
-```
-
-3. Run the program:
-
-```
+```bash
 python app.py
 ```
 
----
+## Data Structure
 
-##  Example Usage
+The inventory is stored as a list of dictionaries:
 
+```python
+{"nombre": str, "precio": float, "cantidad": int}
 ```
---- INVENTORY MENU ---
+
+## Functionality Overview
+
+The system includes the following operations:
+
 1. Add product
 2. Show inventory
 3. Search product
 4. Update product
 5. Delete product
-6. Statistics
-7. Save CSV
-8. Load CSV
+6. View statistics
+7. Save inventory to CSV
+8. Load inventory from CSV
 9. Exit
+
+## CSV Format
+
+The system uses the following structure for CSV files:
+
+```
+nombre,precio,cantidad
 ```
 
----
+## Acceptance Criteria
 
-##  Acceptance Criteria
+* The system successfully saves and loads inventory data using CSV files.
+* Users can choose to overwrite or merge data when loading files.
+* Invalid rows in CSV files are ignored and reported.
+* The application handles errors without crashing.
+* The inventory is managed using a list of dictionaries.
+* The code is modular, readable, and well-structured.
+* All features are accessible through a functional menu system.
 
-*  The inventory can be saved and loaded using CSV files.
-*  The system allows overwriting or merging data.
-*  Proper error handling without crashing the program.
-*  Use of a list of dictionaries as the main data structure.
-*  Modular code (app.py, servicios.py, archivos.py).
-*  Correct calculation of statistics.
-*  Functional and validated menu.
-*  Clean, readable, and well-documented code.
-*  Delivery of the complete system flowchart (PNG/PDF).
-
----
-
-##  Author
+## Author
 
 * Software Development Student

@@ -56,10 +56,14 @@ def show_lis_inventory():
 
     for products in lis_inventory:
         print()
-        print("the states of your inventory:")
-        print(f"\n|product name: {products['name']}|")
-        print(f"\n|price: {products['price']}|")
-        print(f"\n|quantity: {products['quantity']}|")
+        print("the states of your inventory =>")
+        print("\n","-"*60)
+        print(f"|product name: {products['name']}|")
+        print("-"*60)
+        print(f"|price: {products['price']}|")
+        print("-"*60)
+        print(f"|quantity: {products['quantity']}|")
+        print("-"*60)
 
 
 #---------------------------------------------------------
@@ -83,7 +87,7 @@ def search_products():
             return
 
     print("product not found")
-    
+
 
 #---------------------------------------------------------
 def update_product():
@@ -160,7 +164,8 @@ def calculate_statistics():
 
 
     print("\n" + "=" * 60)
-    print(""" ╔════════════════════════════╗
+    print("""  
+              ╔════════════════════════════╗
     ---------------INVENTORY STATISTICS---------------
               ╚════════════════════════════╝""")
     print("")

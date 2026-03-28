@@ -1,5 +1,5 @@
 from services import *
-from files import save_csv
+from files import *
 
 keep_register = "yes"
 
@@ -10,7 +10,7 @@ while keep_register == "yes":
             WELCOME TO THE SALES RECORD RIWI STORE!!             
     ╚════════════════════════════════════════════════════════════╝
                  ╔════════════════════════════╗
-    -------------------------MENU---------------------------------
+    ------------------------MAIN MENU ---------------------------------
                  ╚════════════════════════════╝
                      1. Add product.
                      2. show inventory.
@@ -22,8 +22,7 @@ while keep_register == "yes":
                      8. Load CSV 
                      9. Exit.
     --------------------------------------------------------------                   
-     {"="*61}
-        enter a option => """)).strip()
+    enter a option => """)).strip()
         
 
                             
@@ -42,6 +41,7 @@ while keep_register == "yes":
 
         elif option == "5":
             save_csv(lis_inventory)
+            print("Product saved successfully!")
 
         elif option == "6":
             delete_product()
@@ -50,7 +50,7 @@ while keep_register == "yes":
             calculate_statistics()
 
         elif option == "8":
-            print ("")
+            load_csv(lis_inventory,archivo="database.csv")
 
         elif option == "9":
             print ("Exting...")
