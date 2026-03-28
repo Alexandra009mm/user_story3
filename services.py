@@ -1,8 +1,6 @@
-# lista del inventario
-lis_inventory = []
+lis_inventory = [] 
 
 #---------------------------------------------------------
-
 def add_products():
     keep_register = "yes"
 
@@ -11,23 +9,32 @@ def add_products():
         product_name = ""
         while product_name == "":
             print()
-            product_name = input("enter a product name: ")
+            product_name = input("enter a product name: ").strip()
             if product_name == "":
                 print("Error, this field must be filled")
 
         price = 0
         while price <= 0:
-            print()
-            price = float(input("enter the price: "))
-            if price <= 0:
+            try:
+                print()
+                price = float(input("enter the price: "))
+                if price <= 0:
+                    print("Error, enter a valid number")
+            except ValueError:
                 print("Error, enter a valid number")
+
+
 
         quantity = 0
         while quantity <= 0:
-            print()
-            quantity = int(input("Enter a quantity: "))
-            if quantity <= 0:
+            try:
+                print()
+                quantity = int(input("Enter a quantity: "))
+                if price <= 0:
+                    print("Error, enter a valid quantity ")
+            except ValueError:
                 print("Error, enter a valid quantity")
+ 
 
         dict_products = {
             "name": product_name,
@@ -37,9 +44,7 @@ def add_products():
 
         lis_inventory.append(dict_products)
 
-        keep_register = input("do you want enter other product? yes/no: ").lower()
-
-       
+        keep_register = input("do you want enter other product? yes/no: ").lower().strip()
 
 
 
@@ -55,6 +60,8 @@ def show_lis_inventory():
         print(f"\n|product name: {products['name']}|")
         print(f"\n|price: {products['price']}|")
         print(f"\n|quantity: {products['quantity']}|")
+
+
 #---------------------------------------------------------
 def search_products():
 
@@ -62,8 +69,8 @@ def search_products():
         print("inventory empty")
         return
 
-    product_name = input("enter product name: ").lower()
-    data = input("what do you want to see (name, price, quantity): ").lower()
+    product_name = input("enter product name: ").lower().strip()
+    data = input("what do you want to see (name, price, quantity): ").lower().strip()
 
     for product in lis_inventory:
         if product["name"].lower() == product_name:
@@ -76,6 +83,7 @@ def search_products():
             return
 
     print("product not found")
+    
 
 #---------------------------------------------------------
 def update_product():
@@ -84,7 +92,7 @@ def update_product():
         print("inventory empty")
         return
 
-    product_name = input("enter product name: ").lower()
+    product_name = input("enter product name: ").lower().strip()
     data = input("what do you want to update (name, price, quantity): ").lower()
 
     for product in lis_inventory:
@@ -110,7 +118,8 @@ def update_product():
     print("product not found")
 
 
-def delete_product ():
+#-------------------------------------------------------------
+def delete_product():
     name =input ("\nEnter the name of the product to delete: ").lower()
 
     for product in lis_inventory:
@@ -127,7 +136,8 @@ def delete_product ():
     print(f" Product '{name}' not found.\n")
 
 
-def calculate_statistics ():
+#-------------------------------------------------------------
+def calculate_statistics():
     
     if not lis_inventory:
         print("  No products to calculate statistics.\n")
@@ -148,8 +158,12 @@ def calculate_statistics ():
         if product["quantity"] > most_stock["quantity"]:
             most_stock = product
 
+
     print("\n" + "=" * 60)
-    print("  INVENTORY STATISTICS")
+    print(""" ╔════════════════════════════╗
+    ---------------INVENTORY STATISTICS---------------
+              ╚════════════════════════════╝""")
+    print("")
     print("-" * 60)
     print(f"  Total units in stock  : {total_units}")
     print(f"  Total inventory value : ${total_value:.2f}")
